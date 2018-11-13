@@ -11,13 +11,13 @@ import java.util.HashMap;
 
 public class LRUCache {
 
-    class Node{
+    private class Node{
         private Node pre;
         private Node next;
         private String key;
         private String value;
 
-        public Node(String key, String value) {
+        private Node(String key, String value) {
             this.key = key;
             this.value = value;
         }
@@ -32,7 +32,7 @@ public class LRUCache {
     private HashMap<String,Node> hashMap;
 
     // 构造LRU缓存数据结构
-    public LRUCache(int limit){
+    private LRUCache(int limit){
         this.limit = limit;
         hashMap = new HashMap<String,Node>();
     }

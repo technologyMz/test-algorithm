@@ -13,7 +13,7 @@ public class DpCompressed {
     private int N = 0;
 
     // 计算best(i)
-    private void calDp(int[][] matrix){
+    private void calcDp(int[][] matrix){
         // 初始化
         M = matrix.length;
         N = matrix[0].length;
@@ -50,7 +50,7 @@ public class DpCompressed {
             for(int j = 0;j < number;j++){
                 // 起始点
                 if(i == 0 && j==0){
-                    best[i][j] = matrix[startX + j][startY - j];
+                    best[1][j] = matrix[startX + j][startY - j];
                 }else {
                     if(i < N){
                         // 前半部分
@@ -63,6 +63,14 @@ public class DpCompressed {
                         }else {
                             //状态转移
                             best[1][j] = Math.max(best[0][j],best[0][j-1]) + matrix[startX + j][startY - j];
+                        }
+                    }else {
+                        // 后半部分
+                        if(i < M && j == number -1){
+                            // 左边界
+                            best[1][j] = best[0][j] + matrix[startX + j][startY - j];
+                        }else {
+                            best[1][j] = Math.max(best[0][j],best[0][j+1]) + matrix[startX + j][startY - j];
                         }
                     }
                 }
@@ -78,8 +86,31 @@ public class DpCompressed {
      * 获取最大值
      */
     public int getMaxAward(int[][] matrix){
-        calDp(matrix);
+        calcDp(matrix);
         return best[0][0];
     }
 
+    public static void main(String[] args) {
+        int[][] matrix1 = {
+                {300,500,560,400,160},
+                {1000,100,200,340,690},
+                {600,500,500,460,320},
+                {300,400,250,210,760}
+        };
+
+        int[][] matrix2 = {
+                {300,500,2560,400},
+                {1000,100,200,300},
+                {600,500,500,460},
+                {300,400,250,210},
+                {860,690,320,760}
+        };
+
+        DpCompressed dp = new DpCompressed();
+
+        System.out.println(dp.getMaxAward(matrix1));
+
+        System.out.println(dp.getMaxAward(matrix2));
+
+    }
 }

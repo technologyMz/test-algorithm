@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Author: mz
  * Date: 2018/11/19 10:00
- * Description: 记忆搜索与动态规划
+ * Description: 深度搜索
  */
 public class DeepFirstSearch {
 

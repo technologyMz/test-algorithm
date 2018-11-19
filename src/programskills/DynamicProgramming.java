@@ -124,8 +124,12 @@ public class DynamicProgramming {
                 {860,690,320,760}
         };
 
+        DynamicProgramming dp = new DynamicProgramming();
 
+        System.out.println(dp.getMaxAward(matrix1));
+        dp.printBestPath();
+
+        System.out.println(dp.getMaxAward(matrix2));
+        dp.printBestPath();
     }
-
-
 }

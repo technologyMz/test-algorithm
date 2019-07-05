@@ -38,6 +38,7 @@ public class LeastGenTree {
 
         while(reachedVertexList.size() < matrix.length){
             weight = INF;
+            //在已触达的顶点中，寻找到达新顶点的最短边
             for(Integer vertexIndex:reachedVertexList){
                 for(int i = 0;i < matrix.length;i++){
                     if(!reachedVertexList.contains(i)){
@@ -49,10 +50,12 @@ public class LeastGenTree {
                     }
                 }
             }
+            //确定了权值最小的目标顶点，放入已触达顶点集合
             reachedVertexList.add(toIndex);
+
+            //放入最小生成树的数组
             parents[toIndex] = fromIndex;
         }
-
         return parents;
     }
 
